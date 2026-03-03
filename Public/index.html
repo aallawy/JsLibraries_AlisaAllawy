@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust Explorer - Discover Amazing Travel Destinations</title>
+    
+    <!-- Glide.js CSS for carousel slider -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3/dist/css/glide.core.min.css">
+    
+    <!-- Leaflet CSS for interactive maps -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+    
+    <!-- AOS CSS for scroll animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/CSS/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🌍 Wanderlust</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#destinations" class="nav-link">Destinations</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#stats" class="nav-link">Stats</a></li>
+                <li><a href="#map" class="nav-link">Map</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+            <h1>Explore the World's Most Beautiful Destinations</h1>
+            <p>Discover hidden gems, breathtaking landscapes, and unforgettable adventures</p>
+            <button class="cta-button" onclick="scrollToSection('destinations')">Start Exploring</button>
+        </div>
+        <div class="hero-overlay"></div>
+    </section>
+
+    <!-- Destinations Section with Glide.js Carousel -->
+    <section id="destinations" class="destinations-section" data-aos="fade-up" data-aos-duration="800">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-down" data-aos-duration="800">Featured Destinations</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-duration="800">Handpicked travel destinations for your next adventure</p>
+            
+            <div class="glide">
+                <div class="glide__track" data-glide-el="track">
+                    <ul class="glide__slides">
+                        <!-- Original slides -->
+                        <li class="glide__slide destination-card">
+                            <img src="assets/IMAGES/R.jpg" alt="Paris, France" class="card-image">
+                            <div class="card-content">
+                                <h3>Paris, France</h3>
+                                <p>The City of Light awaits with iconic landmarks, world-class museums, and romantic streets.</p>
+                                <span class="rating">⭐ 4.8/5</span>
+                            </div>
+                        </li>
+                        <li class="glide__slide destination-card">
+                            <img src="assets/IMAGES/Japan.jpg" alt="Tokyo, Japan" class="card-image">
+                            <div class="card-content">
+                                <h3>Tokyo, Japan</h3>
+                                <p>Experience the perfect blend of ancient tradition and cutting-edge modernity in Japan's vibrant capital.</p>
+                                <span class="rating">⭐ 4.9/5</span>
+                            </div>
+                        </li>
+                        <li class="glide__slide destination-card">
+                            <img src="assets/IMAGES/temple_in_water_with_reflection_bali_indonesia_pura_ulun_danu_bratan_during_sunset_hd_travel.jpg" alt="Bali, Indonesia" class="card-image">
+                            <div class="card-content">
+                                <h3>Bali, Indonesia</h3>
+                                <p>Tropical paradise with pristine beaches, ancient temples, and lush rice terraces.</p>
+                                <span class="rating">⭐ 4.7/5</span>
+                            </div>
+                        </li>
+                        <li class="glide__slide destination-card">
+                            <img src="assets/IMAGES/Barcelona.webp" alt="Barcelona, Spain" class="card-image">
+                            <div class="card-content">
+                                <h3>Barcelona, Spain</h3>
+                                <p>Gothic architecture, Mediterranean beaches, and vibrant nightlife in this European gem.</p>
+                                <span class="rating">⭐ 4.6/5</span>
+                            </div>
+                        </li>
+                        <li class="glide__slide destination-card">
+                            <img src="assets/IMAGES/mbr-1920x1222.jpg" alt="New Zealand" class="card-image">
+                            <div class="card-content">
+                                <h3>New Zealand</h3>
+                                <p>Adventure awaits in this land of stunning landscapes, from mountains to fjords.</p>
+                                <span class="rating">⭐ 4.9/5</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="glide__arrows" data-glide-el="controls">
+                    <button class="glide__arrow glide__arrow--left" data-glide-dir="<">❮</button>
+                    <button class="glide__arrow glide__arrow--right" data-glide-dir=">">❯</button>
+                </div>
+                <div class="glide__dots" data-glide-el="controls[nav]">
+                    <button class="glide__dot" data-glide-dir="=0"></button>
+                    <button class="glide__dot" data-glide-dir="=1"></button>
+                    <button class="glide__dot" data-glide-dir="=2"></button>
+                    <button class="glide__dot" data-glide-dir="=3"></button>
+                    <button class="glide__dot" data-glide-dir="=4"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section with Chart.js -->
+    <section id="stats" class="stats-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-down" data-aos-duration="800">Travel Statistics</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-duration="800">Insights from millions of travelers worldwide</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card" data-aos="flip-left" data-aos-duration="1000">
+                    <div class="chart-container">
+                        <canvas id="visitChart"></canvas>
+                    </div>
+                    <h3>Most Visited Regions</h3>
+                </div>
+                <div class="stat-card" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="chart-container">
+                        <canvas id="budgetChart"></canvas>
+                    </div>
+                    <h3>Travel Budget Breakdown</h3>
+                </div>
+                <div class="stat-card" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="400">
+                    <div class="chart-container">
+                        <canvas id="seasonChart"></canvas>
+                    </div>
+                    <h3>Peak Travel Seasons</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-down" data-aos-duration="800">Travel Gallery</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-duration="800">Stunning moments from around the world</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item" data-aos="fade-up" data-aos-duration="800">
+                    <div class="gallery-image" style="background-image: url('assets/IMAGES/mountain.jpg');" alt="Mountain Peak"></div>
+                    <div class="gallery-overlay">
+                        <h3>Mountain Peak</h3>
+                        <p>Alpine Adventure</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                    <div class="gallery-image" style="background-image: url('assets/IMAGES/Tropical\ Beach.jpg');" alt="Tropical Beach"></div>
+                    <div class="gallery-overlay">
+                        <h3>Tropical Beach</h3>
+                        <p>Paradise Found</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                    <div class="gallery-image" style="background-image: url('assets/IMAGES/Desert.jpg');" alt="Desert Sunset"></div>
+                    <div class="gallery-overlay">
+                        <h3>Desert Sunset</h3>
+                        <p>Golden Hour</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+                    <div class="gallery-image" style="background-image: url('assets/IMAGES/City.jpg');" alt="Urban explorer"></div>
+                    <div class="gallery-overlay">
+                        <h3>Urban Explorer</h3>
+                        <p>City Lights</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+                    <div class="gallery-image" style="background-image: url('assets/IMAGES/forest.jpg');" alt="Forest Trail"></div>
+                    <div class="gallery-overlay">
+                        <h3>Forest Trail</h3>
+                        <p>Nature's Path</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
+                    <div class="gallery-image" style="background-image: url('assets/IMAGES/cultural.jpg');" alt="Cultural Heritage"></div>
+                    <div class="gallery-overlay">
+                        <h3>Cultural Heritage</h3>
+                        <p>Ancient Wonders</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Map Section with Leaflet.js -->
+    <section id="map" class="map-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-down" data-aos-duration="800">Explore Destinations on Map</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-duration="800">Click on markers to learn more about each destination</p>
+            
+            <div id="map-container" class="map-container" data-aos="zoom-in" data-aos-duration="1000"></div>
+            
+            <div class="map-info" data-aos="fade-up" data-aos-duration="800">
+                <h3>Destination Information</h3>
+                <p id="destination-info">Click on a marker to see destination details</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section" data-aos="fade-up" data-aos-duration="1000">
+        <div class="container">
+            <h2>Subscribe to Our Newsletter</h2>
+            <p>Get travel tips, destination guides, and exclusive offers delivered to your inbox</p>
+            <form class="newsletter-form" onsubmit="handleNewsletterSubmit(event)">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit" class="submit-button">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Wanderlust</h4>
+                    <p>Your ultimate travel companion for discovering the world's most amazing destinations.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#destinations">Destinations</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#map">Map</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Twitter</a>
+                        <a href="#" class="social-link">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Wanderlust Explorer. All rights reserved. | Built with ❤️ for travelers</p>
+                <p>
+  Libraries used: Glide.js, AOS, Chart.js, Leaflet.js
+</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Glide.js Script -->
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide@3/dist/glide.min.js"></script>
+    
+    <!-- Leaflet.js Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    
+    <!-- AOS Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <!-- Chart.js Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="assets/JS/main.js"></script>
+    
+</body>
+</html>
